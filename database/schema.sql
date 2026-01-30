@@ -1,1 +1,4 @@
-
+-- QATRA
+-- Database Schema
+-- Oracle SQL Compatible
+-- Tables will be defined below
