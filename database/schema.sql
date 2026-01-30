@@ -25,3 +25,19 @@ CREATE TABLE hospitals (
         FOREIGN KEY (hospital_id)
         REFERENCES users(user_id)
 );
+-- ============================
+-- DONORS TABLE
+-- ============================
+
+CREATE TABLE donors (
+    donor_id NUMBER PRIMARY KEY,
+    blood_type VARCHAR2(3)
+        CHECK (blood_type IN
+        ('A+','A-','B+','B-','AB+','AB-','O+','O-')),
+    last_donation_date DATE,
+    eligible CHAR(1) DEFAULT 'Y',
+    CONSTRAINT fk_donor_user
+        FOREIGN KEY (donor_id)
+        REFERENCES users(user_id)
+);
+
