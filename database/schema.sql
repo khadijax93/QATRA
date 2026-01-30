@@ -57,5 +57,22 @@ CREATE TABLE blood_requests (
         FOREIGN KEY (hospital_id)
         REFERENCES hospitals(hospital_id)
 );
+-- ============================
+-- DONATIONS TABLE
+-- ============================
+
+CREATE TABLE donations (
+    donation_id NUMBER PRIMARY KEY,
+    donor_id NUMBER NOT NULL,
+    request_id NUMBER NOT NULL,
+    donation_date DATE DEFAULT SYSDATE,
+    CONSTRAINT fk_donation_donor
+        FOREIGN KEY (donor_id)
+        REFERENCES donors(donor_id),
+    CONSTRAINT fk_donation_request
+        FOREIGN KEY (request_id)
+        REFERENCES blood_requests(request_id)
+);
+
 
 
