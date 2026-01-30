@@ -40,4 +40,22 @@ CREATE TABLE donors (
         FOREIGN KEY (donor_id)
         REFERENCES users(user_id)
 );
+-- ============================
+-- BLOOD_REQUESTS TABLE
+-- ============================
+
+CREATE TABLE blood_requests (
+    request_id NUMBER PRIMARY KEY,
+    hospital_id NUMBER NOT NULL,
+    blood_type VARCHAR2(3)
+        CHECK (blood_type IN
+        ('A+','A-','B+','B-','AB+','AB-','O+','O-')),
+    quantity NUMBER NOT NULL,
+    urgency_level VARCHAR2(20),
+    status VARCHAR2(20) DEFAULT 'OPEN',
+    CONSTRAINT fk_request_hospital
+        FOREIGN KEY (hospital_id)
+        REFERENCES hospitals(hospital_id)
+);
+
 
