@@ -14,3 +14,14 @@ CREATE TABLE users (
     role VARCHAR2(20)
         CHECK (role IN ('HOSPITAL', 'DONOR', 'ADMIN'))
 );
+-- ============================
+-- HOSPITALS TABLE
+-- ============================
+
+CREATE TABLE hospitals (
+    hospital_id NUMBER PRIMARY KEY,
+    hospital_name VARCHAR2(150) NOT NULL,
+    CONSTRAINT fk_hospital_user
+        FOREIGN KEY (hospital_id)
+        REFERENCES users(user_id)
+);
